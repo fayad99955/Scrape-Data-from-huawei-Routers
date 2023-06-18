@@ -1,0 +1,113 @@
+authentication-scheme default
+ #
+ authorization-scheme default
+ #
+ accounting-scheme default
+ #
+ domain default
+ #
+ domain default_admin
+#
+stack
+#
+license
+#
+interface Vlanif999
+ ip address 10.10.10.26 255.255.255.192
+#
+interface Vlanif4005
+ ip address 172.28.164.16 255.255.240.0
+#
+interface MEth0/0/0
+#
+interface Eth-Trunk0
+ description "peerlink CE6863-SW2"
+ mode lacp-static
+ peer-link 1
+#
+interface Eth-Trunk1
+ description "to interconnection lsw"
+ port link-type trunk
+ undo port trunk allow-pass vlan 1
+ port trunk allow-pass vlan 2 to 4063
+ mode lacp-static
+ dfs-group 1 m-lag 1
+#
+interface Eth-Trunk11
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 998 1000 to 4000 4011 to 4020 4031
+ mode lacp-static
+ dfs-group 1 m-lag 11
+#
+#
+interface 25GE1/0/3
+description "for maintenace"
+ip address 172.28.240.4 255.255.255.0
+port link-type hybrid
+
+port trunk allow-pass vlan 4001 to 4002
+port hybrid tagged vlan 4003 to 4006 4008 to 4010
+ port hybrid untagged vlan 4007
+eth-trunk 1
+ device transceiver 25GBASE-FIBER
+#
+interface Eth-Trunk12
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 998 1000 to 4000 4011 to 4020 4031
+ mode lacp-static
+ dfs-group 1 m-lag 12
+#
+interface Eth-Trunk13
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 998 1000 to 4000 4011 to 4020 4031
+ mode lacp-static
+ dfs-group 1 m-lag 13
+#
+interface Eth-Trunk14
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 998 1000 to 4000 4011 to 4020 4031
+ mode lacp-static
+ dfs-group 1 m-lag 14
+#
+interface Eth-Trunk15
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 998 1000 to 4000 4011 to 4020 4031
+ mode lacp-static
+ dfs-group 1 m-lag 15
+#
+interface Eth-Trunk16
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 998 1000 to 4000 4011 to 4020 4031
+ mode lacp-static
+ dfs-group 1 m-lag 16
+#
+interface Eth-Trunk17
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 998 1000 to 4000 4011 to 4020 4031
+ mode lacp-static
+ dfs-group 1 m-lag 17
+#
+interface Eth-Trunk18
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 998 1000 to 4000 4011 to 4020 4031
+ mode lacp-static
+ dfs-group 1 m-lag 18
+#
+interface Eth-Trunk19
+ port link-type trunk
+ port trunk allow-pass vlan 2 to 998 1000 to 4000 4011 to 4020 4031
+ mode lacp-static
+ dfs-group 1 m-lag 19
+##
+interface 100GE1/0/5
+#
+interface 100GE1/0/6
+#
+interface NULL0
+#
+ip route-static 0.0.0.0 0.0.0.0 10.10.10.3
+#
+snmp-agent
+snmp-agent local-engineid 800007DB0324A52C0A2E81
+snmp-agent community read cipher %^%#>h:6342y$UaBXI>(!pJ5ypT6XFb+"QsUdF~S^OOLYoL-+\VAwN_=f/3X-o/9/_CU+o_f@!Cm%<L(e#'C%^%# mib-view Amr@123
+#
